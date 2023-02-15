@@ -1,5 +1,6 @@
 package com.fiducial.fiducial;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,19 +14,26 @@ public class PersonServiceImp implements PersonService{
     private PersonRepository personRepository;    
 
     @Override
-    public List<Person> findAllPerson() {        
+    public List<PersonDto> findAllPerson() {        
         
-        return personRepository.findAll();
+        List<PersonDto> list = new ArrayList<>();
+
+        personRepository.findAll().stream().forEach(p -> list.add(PersonMapper.getDto(p)));
+
+        return list;
     }
 
     @Override
-    public boolean insert(Person person) {        
+    public boolean insert(PersonDto person) {        
 
         try{
 
-            if (Objects.isNull(findByName(person.getName()))){
-                person = personRepository.save(person);
+            Person p = PersonMapper.getEntity(person);
+
+            if (Objects.isNull(findByName(p.getName()))){
+                p = personRepository.save(p);
                 return true;
+
             }            
 
         }catch(Exception e){            
@@ -36,8 +44,10 @@ public class PersonServiceImp implements PersonService{
     }
 
     @Override
-    public Person findByName(String name) {
+    public PersonDto findByName(String name) {
+
+        Person p = personRepository.findByName(name);
         
-        return personRepository.findByName(name);
+        return Objects.isNull(p) ? null : PersonMapper.getDto(p);
     }
 }

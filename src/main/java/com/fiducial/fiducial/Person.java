@@ -9,13 +9,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class Person {
-    
+public class Person {        
+
+    public Person() {
+    }
+
+    public Person(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     private Long id;
-
+    
     @Column(nullable = false)
     @Getter
     @Setter

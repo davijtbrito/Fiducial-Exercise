@@ -23,7 +23,7 @@ class FiducialApplicationTests {
 	@Test
 	void getAllPerson(){
 
-		List<Person> list = personService.findAllPerson();
+		List<PersonDto> list = personService.findAllPerson();
 		System.out.println("All Persons in the Database: " + list);
 		assertTrue(list.size() > 0);
 	}
@@ -31,15 +31,14 @@ class FiducialApplicationTests {
 	@Test
 	void getPerson(){
 
-		Person person = personService.findByName("David");		
+		PersonDto person = personService.findByName("David");		
 		assertTrue(Objects.nonNull(person));
 	}
 
 	@Test
 	void addPerson(){
 
-		Person person = new Person();		
-		person.setName("Gorbachev");
+		PersonDto person = new PersonDto(null, "Gorbachev");		
 		
 		assertTrue(personService.insert(person));
 		assertFalse(personService.insert(person));

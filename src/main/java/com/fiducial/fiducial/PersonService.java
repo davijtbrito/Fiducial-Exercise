@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface PersonService {
     
-    public List<Person> findAllPerson();
+    public List<PersonDto> findAllPerson();
 
-    public boolean insert(Person person);
+    public boolean insert(PersonDto person);
 
-    public Person findByName(String name);
+    public PersonDto findByName(String name);
 }
