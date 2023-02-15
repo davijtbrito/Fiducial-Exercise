@@ -22,7 +22,7 @@ class FiducialApplicationTests {
 	void getAllPerson(){
 
 		List<Person> list = personService.findAllPerson();
-		
+		System.out.println("All Persons in the Database: " + list);
 		assertTrue(list.size() > 0);
 	}
 

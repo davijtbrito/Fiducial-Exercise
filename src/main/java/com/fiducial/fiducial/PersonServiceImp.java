@@ -12,10 +12,8 @@ public class PersonServiceImp implements PersonService{
     private PersonRepository personRepository;    
 
     @Override
-    public List<Person> findAllPerson() {
-        List<Person> list = personRepository.findAll();
-
-        System.out.println(list);
-        return list;
+    public List<Person> findAllPerson() {        
+        
+        return personRepository.findAll();
     }
 }
