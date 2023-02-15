@@ -22,13 +22,13 @@ public class PersonController {
 
     @GetMapping("/findAll")
     public ResponseEntity<List<PersonDto>> getAllPersons(){
-        return ResponseEntity.ok().body(personService.findAllPerson());
+        return ResponseEntity.ok().body(personService.getAllPerson());
     }
 
 
     @GetMapping("/get")
     public ResponseEntity<PersonDto> getPerson(@RequestParam String name){
-        PersonDto p = personService.findByName(name);
+        PersonDto p = personService.getPersonByName(name);
 
         if (Objects.nonNull(p)){
             return ResponseEntity.ok().body(p);
@@ -40,7 +40,7 @@ public class PersonController {
     @PostMapping("/insert")
     public ResponseEntity<String> addPerson(@RequestBody PersonDto p){        
 
-        if (personService.insert(p)){
+        if (personService.addPerson(p)){
             return ResponseEntity.ok("Person added!");
         }
 

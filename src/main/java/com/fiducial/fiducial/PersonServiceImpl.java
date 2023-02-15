@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonServiceImp implements PersonService{
+public class PersonServiceImpl implements PersonService{
     
     @Autowired
     private PersonRepository personRepository;    
 
     @Override
-    public List<PersonDto> findAllPerson() {        
+    public List<PersonDto> getAllPerson() {        
         
         List<PersonDto> list = new ArrayList<>();
 
@@ -24,13 +24,13 @@ public class PersonServiceImp implements PersonService{
     }
 
     @Override
-    public boolean insert(PersonDto person) {        
+    public boolean addPerson(PersonDto person) {        
 
         try{
 
             Person p = PersonMapper.getEntity(person);
 
-            if (Objects.isNull(findByName(p.getName()))){
+            if (Objects.isNull(getPersonByName(p.getName()))){
                 p = personRepository.save(p);
                 return true;
 
@@ -44,7 +44,7 @@ public class PersonServiceImp implements PersonService{
     }
 
     @Override
-    public PersonDto findByName(String name) {
+    public PersonDto getPersonByName(String name) {
 
         Person p = personRepository.findByName(name);
         

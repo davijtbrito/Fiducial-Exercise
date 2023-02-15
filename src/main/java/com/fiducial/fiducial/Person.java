@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * This entity will represent the person in the database.
+ */
 @Entity
 public class Person {        
 

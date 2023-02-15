@@ -2,6 +2,9 @@ package com.fiducial.fiducial;
 
 import lombok.Data;
 
+/**
+ * Represents the entity {@link Person}. 
+ */
 @Data
 public class PersonDto {        
 
