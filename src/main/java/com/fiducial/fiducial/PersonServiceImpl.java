@@ -50,4 +50,9 @@ public class PersonServiceImpl implements PersonService{
         
         return Objects.isNull(p) ? null : PersonMapper.getDto(p);
     }
+
+    @Override
+    public void addListPerson(List<PersonDto> list) {
+        list.stream().forEach(p -> this.addPerson(p));        
+    }
 }

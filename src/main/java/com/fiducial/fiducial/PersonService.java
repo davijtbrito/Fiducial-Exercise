@@ -22,6 +22,13 @@ public interface PersonService {
      */
     public boolean addPerson(PersonDto person);
 
+
+    /**
+     * Add persons in the database.
+     * @param list list of {@link PersonDto}.
+     */
+    public void addListPerson(List<PersonDto> list);
+
     /**
      * Return the person by the name.
      * @param name the name of the person.

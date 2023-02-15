@@ -12,7 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+/**
+ * {@summary Responsable for the interface between the requests and Persons.}
+ * {@literal  }
+ * {@literal see also: }
+ * {@link PersonDto} 
+ */
 @RestController
 @RequestMapping("/person")
 public class PersonController {
@@ -45,5 +50,12 @@ public class PersonController {
         }
 
         return ResponseEntity.badRequest().body("Fail to add the person");
+    }
+
+    @PostMapping("/insertAll")
+    public ResponseEntity<String> addPerson(@RequestBody List<PersonDto> list){        
+
+        personService.addListPerson(list);
+        return ResponseEntity.ok("List of Persons were added!");        
     }
 }

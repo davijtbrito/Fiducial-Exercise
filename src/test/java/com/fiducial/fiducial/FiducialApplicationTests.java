@@ -3,6 +3,7 @@ package com.fiducial.fiducial;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,5 +43,23 @@ class FiducialApplicationTests {
 		
 		assertTrue(personService.addPerson(person));
 		assertFalse(personService.addPerson(person));
+	}
+
+	@Test
+	void addListPerson(){
+		
+		int total = personService.getAllPerson().size();
+
+		List<PersonDto> list = new ArrayList<>();
+		list.add(new PersonDto(null, "Mikail Gorbachev"));
+		list.add(new PersonDto(null, "Margareth Tatcher"));
+		list.add(new PersonDto(null, "Ronanld Regan"));
+		list.add(new PersonDto(null, "Margareth Tatcher"));
+
+		personService.addListPerson(list);		
+		
+		int newTotal = personService.getAllPerson().size();
+
+		assertTrue(total == newTotal - 3);		
 	}
 }
